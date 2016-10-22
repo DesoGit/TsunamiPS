@@ -20,10 +20,10 @@ exports.BattleAbilities = {
             if (!pokemon.volatiles['gluttony']) pokemon.addVolatile('gluttony');
               switch (item.id) {
                 case 'sitrusberry':
-                  this.heal(pokemon.maxhp / 2);
+                  return this.heal(pokemon.maxhp / 2);
                   break;
                 case 'oranberry':
-                  this.heal(pokemon.maxhp + 20);
+                  return this.heal(pokemon.maxhp + 20);
                   break;
 
                   case 'figyberry':
@@ -31,7 +31,7 @@ exports.BattleAbilities = {
                   case 'magoberry':
                   case 'iapapaberry':
                   case 'aguavberry':
-                    this.heal(pokemon.maxhp / 4);
+                    return this.heal(pokemon.maxhp / 4);
                     break;
                   case 'occaberry':
                   case 'passhoberry':
