@@ -1,9 +1,5 @@
 'use strict';
 
-//var scanIfBerry = item.isBerry;
-var typeSuppressantBerries = ['occaberry','wacanberry','passhoberry','chilanberry','chopleberry','yacheberry','rindoberry','kasibberry','kebiaberry','shucaberry','cobaberry','chartiberry','tangaberry','payapaberry','habanberry','colburberry','babiriberry'];
-
-
 exports.BattleAbilities = {
     "defeatist": {
         inherit: true,
@@ -22,76 +18,43 @@ exports.BattleAbilities = {
         inherit: true,
         onEatItem: function (item, pokemon) {
             if (!pokemon.volatiles['gluttony']) pokemon.addVolatile('gluttony');
-switch (item.id) {
-    case 'sitrusberry':
-        this.heal(pokemon.maxhp / 2);
-        break;
+              switch (item.id) {
+                case 'sitrusberry':
+                  this.heal(pokemon.maxhp / 2);
+                  break;
+                case 'oranberry':
+                  this.heal(pokemon.maxhp + 20);
+                  break;
 
-    case 'oranberry':
-        this.heal(pokemon.maxhp + 20);
-        break;
-
-    case 'figyberry':
-    case 'wikiberry':
-    case 'magoberry':
-    case 'iapapaberry':
-    case 'aguavberry':
-        //inherit: true,
-            this.heal(pokemon.maxhp / 4);
-        break;
-
-    case 'occaberry':
-    case 'passhoberry':
-    case 'wacanberry':
-    case 'rindoberry':
-    case 'yacheberry':
-    case 'chopleberry':
-    case 'kebiaberry':
-    case 'shucaberry':
-    case 'cobaberry':
-    case 'payapaberry':
-    case 'tangaberry':
-    case 'chartiberry':
-    case 'chilanberry':
-    case 'kasibberry':
-    case 'habanberry':
-    case 'colburberry':
-    case 'babiriberry':
-        //inherit: true,
-		if (typeSuppressantBerries.indexOf('occaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('passhoberry') > -1) { return this.chainModify(0.25);}
-	    	if (typeSuppressantBerries.indexOf('wacanberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('rindoberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('yacheberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('chopleberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('kebiaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('shucaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('cobaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('payapaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('tangaberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('chartiberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('chilanberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('kasibberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('habanberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('colburberry') > -1) { return this.chainModify(0.25);}
-		if (typeSuppressantBerries.indexOf('babiriberry') > -1) { return this.chainModify(0.25);}
-        break;
-	/*case 'custapberry':
-		if (!pokemon.volatiles['custap']) pokemon.addVolatile('custap');
-		effect: {
-		duration: 2,
-		onStart: function (target) {
-		this.add('-start', target, 'ability: Gluttony');
-		},
-			onModifyAtkPriority: 6,
-				onModifySpAPriority: 6,
-		}*/
-		
-}
-		
-
-
-		
+                  case 'figyberry':
+                  case 'wikiberry':
+                  case 'magoberry':
+                  case 'iapapaberry':
+                  case 'aguavberry':
+                    this.heal(pokemon.maxhp / 4);
+                    break;
+                  case 'occaberry':
+                  case 'passhoberry':
+                  case 'wacanberry':
+                  case 'rindoberry':
+                  case 'yacheberry':
+                  case 'chopleberry':
+                  case 'kebiaberry':
+                  case 'shucaberry':
+                  case 'cobaberry':
+                  case 'payapaberry':
+                  case 'tangaberry':
+                  case 'chartiberry':
+                  case 'chilanberry':
+                  case 'kasibberry':
+                  case 'habanberry':
+                  case 'colburberry':
+                  case 'babiriberry':
+                    return this.chainModify(0.25);
+                    break;
+                  default:
+                    return this.chainModify(1); //Do nothing different
+            }
         },
         effect: {
           duration: 2,
@@ -101,9 +64,9 @@ switch (item.id) {
           onModifySpe: function (spe, pokemon) {
     				return this.chainModify(0.66);
     			},
-		onModifyAtk: function (atk, pokemon) {
-			return this.chainModify(0.66);
-		},
+		      onModifyAtk: function (atk, pokemon) {
+			      return this.chainModify(0.66);
+		      },
           onModifyAtkPriority: 6,
     		  onSourceModifyAtk: function (atk, attacker, defender, move) {
     			  if (move.type === 'Ice' || move.type === 'Fire') {
