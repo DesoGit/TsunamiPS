@@ -186,6 +186,23 @@ exports.BattleAbilities = {
           }
         }
       },
+	    	"stickyhold": {
+	inherit: true,
+			onAfterDamage: function (target, source, effect, damage) {
+			if (effect && effect.flags['contact']) {
+				this.add('-ability', target, 'Sticky Hold');
+				this.boost({spe: -1}, source, target, null, true);
+			}
+		},
+}
+	    "gooey": {
+	    inherit: true,
+	    			if (effect && effect.flags['contact']) {
+				this.add('-ability', target, 'Gooey');
+				this.boost({spe: -2}, source, target, null, true);
+			}
+		},
+    }
     }
 
 }
