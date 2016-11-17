@@ -92,5 +92,42 @@ exports.BattleMovedex = {
             chance: 10,
             volatileStatus: 'flinch'
         }
+    },
+    "sandattack": {
+      inherit: true,
+      category: "Physical",
+      basePower: 30,
+      accuracy: 75,
+      secondary: {
+        chance: 30,
+        boost:{acc, -1}
+      }
+    },
+    "disarmingvoice": {
+      inherit: true,
+      basePower: 90,
+      secondary: {
+        chance: 20,
+        boost: {atk: -1, spa: -1}
+      }
+    },
+    "dazzlinggleam": {
+      inherit: true,
+      basePower: 105,
+      accuracy: true,
+      onTryHit: function (target) {
+        if (target.item === 'blackglasses' || target.item === 'wiseglasses' || target.item === 'safteygoggles') {
+           this.add('-immune', this);
+           return false;
+        }
+      }
+    },
+    "shadowball": {
+      inherit: true,
+      basePower: 100,
+      secondary: {
+        chance: 10,
+        volatileStatus: 'curse'
+      }
     }
 }
