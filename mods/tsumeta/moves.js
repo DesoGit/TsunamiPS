@@ -116,7 +116,7 @@ exports.BattleMovedex = {
       basePower: 105,
       accuracy: true,
       onTryHit: function (target) {
-        if (target.item === 'blackglasses' || target.item === 'wiseglasses' || target.item === 'safteygoggles') {
+        if (target.item === 'blackglasses' || target.item === 'wiseglasses' || target.item === 'safetygoggles') {
            this.add('-immune', this);
            return false;
         }
